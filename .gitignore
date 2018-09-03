@@ -4,4 +4,12 @@
 **/.terraform
 **/terraform.tfstate
 **/terraform.tfstate.backup
+<<<<<<< HEAD
 
+=======
+.idea
+*.iml
+
+.build-harness
+build-harness
+>>>>>>> 3f11b3caf8341c842adb3426f6a4aa2de1bda238
