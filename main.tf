@@ -3,8 +3,12 @@ data "aws_ssm_parameter" "read" {
   name  = "${element(var.parameter_read, count.index)}"
 }
 
+locals {
+  parameter_write_length = "${var.parameter_write_length == "" ? length(var.parameter_write) : var.parameter_write_length}"
+}
+
 resource "aws_ssm_parameter" "default" {
-  count           = "${var.enabled == "true" ? length(var.parameter_write) : 0}"
+  count           = "${var.enabled == "true" ? local.parameter_write_length : 0}"
   name            = "${lookup(var.parameter_write[count.index], "name")}"
   description     = "${lookup(var.parameter_write[count.index], "description", lookup(var.parameter_write[count.index], "name"))}"
   type            = "${lookup(var.parameter_write[count.index], "type", "SecureString")}"

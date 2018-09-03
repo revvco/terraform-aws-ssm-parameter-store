@@ -23,6 +23,11 @@ DESC
 
   default = []
 }
+variable "parameter_write_length" {
+  description = "The number of items in the parameter_write list"
+  default = ""
+  
+}
 
 variable "tags" {
   type        = "map"
